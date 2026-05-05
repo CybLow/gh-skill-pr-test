@@ -1,19 +1,17 @@
-name: Manual
+name: Manual2
 on:
   workflow_dispatch:
     inputs:
-      environment:
-        description: Target environment
+      env:
+        description: Target
         required: true
         default: staging
         type: choice
-        options: [staging, production]
-      message:
-        description: Custom message
-        required: false
-        type: string
+        options:
+          - staging
+          - production
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Deploying to ${{ inputs.environment }}: ${{ inputs.message }}"
+      - run: echo "Deploying to ${{ inputs.env }}"
